@@ -1,0 +1,73 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gate Access</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #343a40;
+            color: white;
+            padding: 0.8rem 1.5rem;
+        }
+        .navbar .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            max-width: 400px;
+            margin: 2rem auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        button {
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            margin: 1rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+        }
+        .open-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .close-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+        .message {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo"><img src="https://lvido.tech/img/logo-lvido-tech-light.png" alt="LVido Tecnologia"></div>
+        <a href="/admin/">Login</a>
+    </div>
+    <div class="container">
+	    {% block container %}
+	    {% endblock container %}
+    </div>
+</body>
+</html>

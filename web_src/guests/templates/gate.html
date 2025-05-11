@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block container %}
+<div class="message">
+Welcome, {{ guest.name }}.<br>
+You have access from <strong>{{ guest.start_time }}</strong> to <strong>{{ guest.end_time }}</strong>.
+</div>
+<form method="post" action="open">
+{% csrf_token %}
+<button class="open-btn" name="action" value="open">Open Gate</button>
+<form method="post" action="close">
+{% csrf_token %}
+<button class="close-btn" name="action" value="close">Close Gate</button>
+</form>
+{% endblock container %}

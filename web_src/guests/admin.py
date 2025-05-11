@@ -15,9 +15,9 @@ class GateAccessLogResource(resources.ModelResource):
 
 class GateAccessLogInline(admin.TabularInline):
     model = GateAccessLog
-    extra = 0
     readonly_fields = ("triggered_at", "action", "status_colored")
     can_delete = False
+    extra = 0
 
     def status_colored(self, obj):
         color = {
