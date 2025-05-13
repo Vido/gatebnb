@@ -1,9 +1,18 @@
-from django.shortcuts import render
-
 from django.utils import timezone
+from django.shortcuts import render
+from django.views.generic import TemplateView
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseNotFound
+
 from .models import GuestAccess, GateAccessLog
 
+
+class GateView(TemplateView):
+    template_name = 'gate.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['guest'] = GuestAccess.objects.filter(token=kwargs['token']).first()
+        return context
 
 def autorize_gate(request, token, action):
     guest = GuestAccess.objects.filter(token=token).first()

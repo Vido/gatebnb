@@ -1,0 +1,19 @@
+version: "3.5"
+services:
+  app:
+    build: .
+    image: gatebnb:latest
+    container_name: gatebnb
+    entrypoint: ./entrypoint.sh
+    volumes:
+      - ./staticfiles:/src/staticfiles
+      - ./db.sqlite3:/src/db.sqlite3
+      - /var/logs/gatebnb:/srv/logs
+    ports:
+      - "8000:8000"
+    networks:
+      - gatebnb_network
+
+networks:
+  gatebnb_network:
+    name: gatebnb_network

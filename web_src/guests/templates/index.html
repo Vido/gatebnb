@@ -1,7 +1,12 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block container %}
 <div class="message">
-	<img width="400" tabindex="0" alt="Futuristic Gatekeeper and Access System" src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-fb30-622f-a20b-51a67f1bfa05/raw?se=2025-05-11T23%3A35%3A34Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;scid=00000000-0000-0000-0000-000000000000&amp;skoid=e9d2f8b1-028a-4cff-8eb1-d0e66fbefcca&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2025-05-11T07%3A31%3A45Z&amp;ske=2025-05-12T07%3A31%3A45Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=Csig4ARuIZ3UkXTrAzihyoCoxAy2LYgt5VKQHk3B9Kw%3D">
+	<h1>GateBnB</h1>
+	<img width="400" tabindex="0"
+	     alt="GateBnB - Futuristic Gatekeeper and Access System"
+	     src="{% static 'splash.png' %}">
+
+	 <p>GateBnB - Futuristic Gatekeeper and Access System</p>
 </div>
 {% endblock container %}
