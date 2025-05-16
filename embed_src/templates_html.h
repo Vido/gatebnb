@@ -1,8 +1,11 @@
+#pragma once
+
+#define BASE_HTML R"rawliteral(
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gate Access</title>
+    <title>GateBnB Access</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
@@ -59,14 +62,41 @@
         }
     </style>
 </head>
+)rawliteral"
+
+#define GATE_HTML R"rawliteral(
 <body>
     <div class="navbar">
         <div class="logo"><img src="https://lvido.tech/img/logo-lvido-tech-light.png" alt="LVido Tecnologia"></div>
-        <a href="/admin/">Login</a>
     </div>
     <div class="container">
-	    {% block container %}
-	    {% endblock container %}
-    </div>
+      <div class="message">
+        Bem Vindo - Chalé ao Pé da Pedra
+      </div>
+      <form method="post" action="open">
+      <button class="open-btn" name="action" value="open">Abrir</button>
+      <form method="post" action="close">
+      <button class="close-btn" name="action" value="close">Fechar</button>
+      </form>
+      </div>
 </body>
 </html>
+)rawliteral"
+
+#define INDEX_HTML R"rawliteral(
+    <div class="navbar">
+        <div class="logo"><img src="https://lvido.tech/img/logo-lvido-tech-light.png" alt="LVido Tecnologia"></div>
+    </div>
+    <div class="container">
+      <div class="message">
+        Bem Vindo! Você está conectado ao Portão
+      </div>
+      <div>
+      Clique no link com token enviado no Whatsapp.
+      </div>
+</body>
+</html>
+)rawliteral"
+
+const char index_html[] PROGMEM = BASE_HTML INDEX_HTML;
+const char gate_html[] PROGMEM = BASE_HTML GATE_HTML;

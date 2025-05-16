@@ -4,7 +4,8 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 
-#include <led_builtin.h>
+#include <ledBuiltin.h>
+#include <templates_html.h>
 
 extern String backend_base_url;
 extern WebServer server;
@@ -12,8 +13,7 @@ extern WebServer server;
 // Handle root URL
 bool handleRoot() {
   blink();
-  String html_template = "<h1>Hello from ESP32</h1>";
-  server.send(200, "text/html", html_template);
+  server.send(200, "text/html", index_html);
   blink();
   return true;
 }
@@ -22,14 +22,11 @@ class GateRequestHandler : public RequestHandler {
 public:
   bool canHandle(WebServer &server, HTTPMethod method, const String &uri) override { 
       // Example: /gate/e808f789b390456dbf60c0516ac00da5/open 
-      Serial.println("canHandle");
-      Serial.println(uri);
-      Serial.println(uri.startsWith("/gate/"));
-      return uri.startsWith("/gate/");
+      Serial.println(uri.startsWith("/gate"));
+      return uri.startsWith("/gate");
     }
 
   bool handle(WebServer &server, HTTPMethod requestMethod, const String &requestUri) override {
-
     blink();
     // Split path into components
     String path = server.uri(); 
@@ -42,12 +39,10 @@ public:
       server.send(400, "text/plain", "Missing token or action");
       return true;
     }
-
     String token = path.substring(0, slashIndex);
     String action = path.substring(slashIndex + 1);
     */
-
-    server.send(200, "text/plain", "Gate opened for token: ");
+    server.send(200, "text/html", gate_html);
     blink();
 
     return true;
